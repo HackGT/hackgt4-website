@@ -1,0 +1,99 @@
+@font-face {
+    font-family: KenneyFuture;
+    src: url(../fonts/KennyFuture.ttf);
+}
+
+#splash-canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#splash-parent div.is-overlay p {
+    margin-bottom: 10vh;
+    font-family: KenneyFuture;
+    font-size: 2rem;
+}
+
+#splash-parent div.is-overlay {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    top: 66%;
+
+    /* Safari 5.1-6 */
+    background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); 
+    /* Opera 11.1-12 */
+    background: -o-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
+    /* Firefox 3.6-15 */
+    background: -moz-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
+    /* Standard */
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+#splash-parent canvas {
+    overflow: hidden;
+}
+
+#splash-parent {
+    color: white;
+    position: absolute;
+    overflow: hidden;
+    left: 0px;
+    right: 0px;
+    height: 100vh;
+}
+
+div.event-info {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    left: 0px;
+    right: 0px;
+    top: 100vh;
+}
+
+input[type="text"], input[type="email"] {
+    font-family: KenneyFuture, monospace;
+    font-size: 2rem;
+	display: block;
+	border: 0;
+	background-color: transparent;
+    border-bottom: 2px solid #b4fff3;
+    color: #b4fff3;
+    transition: border-color 0.5s;
+	text-decoration: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+	outline: none;
+	/* background-color: transparent; */
+    /* border-bottom: 2px solid #c32aff; */
+	/* opacity: 0.8; */
+}
+
+input[type="text"]::selection {
+  background: #b4fff3; /* WebKit/Blink Browsers */
+  opacity: 1.0;
+  color: black;
+}
+
+input[type="text"]::-moz-selection {
+  background: #b4fff3; /* Gecko Browsers */
+}
+
+body {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 200vh;
+    background: black;
+}
+
