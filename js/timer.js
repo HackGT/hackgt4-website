@@ -7,11 +7,12 @@ class Timer {
         this.cursor = opts.cursor || {};
         this.cursor.text = this.cursor.text || "|";
         this.mesh = new THREE.Object3D();
+        this.size = opts.size;
 
-        this.make_text = (text) => {
+        this.make_text = (text, size) => {
             return new THREE.TextGeometry(text, {
                 font: new THREE.Font(opts.font),
-                size: opts.size,
+                size: size,
                 height: opts.height,
                 curveSegments: opts.curveSegments,
                 material: 0,
@@ -33,7 +34,7 @@ class Timer {
             }),
         ]);
 
-        this.geometry = this.make_text("");
+        this.geometry = this.make_text("", 10);
         this.text_mesh = new THREE.Mesh(this.geometry, this.material);
         this.update_time();
         this.final_geometry = this.geometry;
@@ -48,16 +49,25 @@ class Timer {
             this.mesh.remove(this.text_mesh);
             this.text_mesh.geometry.dispose();
 
-            let millis  = diff % 1000;
-            let seconds = ("00" + (Math.floor(diff / 1000) % 60)).slice(-2);
-            let minutes = ("00" + (Math.floor(diff / 1000 / 60) % 60)).slice(-2);
-            let hours   = Math.floor(diff / 1000 / 60 / 60) % 24;
-            let days    = Math.floor(diff / 1000 / 60 / 60 / 24);
+            const millis  = diff % 1000;
+            const seconds = ("00" + (Math.floor(diff / 1000) % 60)).slice(-2);
+            const minutes = ("00" + (Math.floor(diff / 1000 / 60) % 60)).slice(-2);
+            const hours   = Math.floor(diff / 1000 / 60 / 60) % 24;
+            const days    = Math.floor(diff / 1000 / 60 / 60 / 24);
 
             // Create new mesh
             this.geometry = this.make_text(
-                `${days} days ${hours}:${minutes}:${seconds}`);
+                `${days} days ${hours}:${minutes}:${seconds}`,
+                this.size * window.innerWidth / window.innerHeight
+            );
             this.text_mesh = new THREE.Mesh(this.geometry, this.material);
+
+            // Get the middle of the text to offset.
+            this.geometry.computeBoundingBox();
+            const text_bb = this.geometry.boundingBox;
+            const middle = -0.5 * (text_bb.max.x - text_bb.min.x);
+
+            this.text_mesh.position.x = middle;
 
             // Add it back to the group
             this.mesh.add(this.text_mesh);

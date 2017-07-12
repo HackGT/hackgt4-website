@@ -5,7 +5,9 @@ import GlitchPass from "../lib/postprocessing/GlitchPass.js";
 import DotScreenShader from "../lib/shaders/DotScreenShader.js";
 import ShaderPass from "../lib/postprocessing/ShaderPass.js";
 import * as KenneyFuture from "../assets/fonts/kenney_future.json";
+
 import THREE from "three";
+import jump from "jump.js";
 
 window.onload = () => {
     "use strict";
@@ -27,7 +29,7 @@ window.onload = () => {
     const text = new Timer({
         date: "2017/10/13",
         font: KenneyFuture,
-        size: 70,
+        size: 40,
         height: 10,
         curveSegments: 4,
         speed: 4,
@@ -90,7 +92,7 @@ window.onload = () => {
     );
 
     // Position and rotate to face us.
-    text.mesh.position.x = middle;
+    // text.mesh.position.x = middle;
     text.mesh.position.y = 0;
     text.mesh.position.z = 100;
     text.mesh.rotation.x = -0.3;
@@ -105,9 +107,7 @@ window.onload = () => {
             document.documentElement.clientHeight,
             window.innerHeight || 0);
         if (window.scrollY < height / 2) {
-            document.querySelector('.event-info').scrollIntoView({
-                behavior: 'smooth'
-            });
+            jump('.event-info');
         }
     });
 };
