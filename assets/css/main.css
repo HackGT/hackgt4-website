@@ -144,7 +144,7 @@ body {
     transition: opacity 0.2s ease-in-out;
 }
 
-.hex-commands svg.draw {
+.hex-commands svg.draw, .hex-commands svg.selected {
     opacity: 1;
     stroke-dasharray: 600;
     stroke-dashoffset: 600;
@@ -258,6 +258,15 @@ input[type=text].prompt {
     opacity: 0;
 }
 
+.hex-commands > img.register-on.selected,
+.hex-commands > img.about-on.selected,
+.hex-commands > img.sponsor-on.selected,
+.hex-commands > img.atl-on.selected,
+.hex-commands > img.share-on.selected
+{
+    opacity: 1;
+}
+
 .hex-commands > img.register-on:hover,
 .hex-commands > img.about-on:hover,
 .hex-commands > img.sponsor-on:hover,
@@ -272,6 +281,15 @@ input[type=text].prompt {
 .hex-commands > img.sponsor:hover,
 .hex-commands > img.atl:hover,
 .hex-commands > img.share:hover
+{
+    opacity: 0 !important;
+}
+
+.hex-commands > img.register.selected,
+.hex-commands > img.about.selected,
+.hex-commands > img.sponsor.selected,
+.hex-commands > img.atl.selected,
+.hex-commands > img.share.selected
 {
     opacity: 0 !important;
 }

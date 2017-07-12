@@ -140,39 +140,12 @@ window.onload = async () => {
     const hexes = document.getElementsByClassName("hex-commands")[0];
     let hexes_animated_in = false;
 
-    const on_scroll = () => {
-        if (!hexes_animated_in && isElementInViewport(hexes)) {
-            const loading_text = document.querySelector(".hex-commands > p");
-
-            const tiles = document.querySelectorAll(
-                ".hex-commands > img.register, " +
-                ".hex-commands > img.about, " +
-                ".hex-commands > img.sponsor, " +
-                ".hex-commands > img.atl, " +
-                ".hex-commands > img.share"
-            );
-
-            setTimeout(() => {
-                loading_text.classList.add("fadeout");
-                setTimeout(() => {
-                    for (const tile of tiles) {
-                        tile.classList.add("animate");
-                    }
-                }, 500);
-            }, 500);
-
-            hexes_animated_in = true;
-        }
-    };
-    document.addEventListener('scroll', on_scroll, false);
-    document.addEventListener('touchmove', on_scroll, false);
-    on_scroll();
-
     document.querySelector("p.skip-intro").addEventListener('click', (e) => {
         document.getElementsByClassName("cover")[0].classList.add("hidden");
     });
 
     let text_rendering = {};
+    let selected_line = undefined;
 
     const draw_line = (line) => {
         document.querySelector(`.hex-commands > svg.${line}`).classList.add("draw");
@@ -188,14 +161,20 @@ window.onload = async () => {
     const clear_line = (line) => {
         document.querySelector(`.hex-commands > svg.${line}`).classList.remove("draw");
         clearTimeout(text_rendering[line]);
+        if (selected_line) {
+            display_section(selected_line);
+            document.querySelector("input.prompt").value = selected_line;
+        }
     };
 
     const show_box = (selector) => {
-        document.querySelector(`div.event-info > div.content > div.${selector}`).classList.add("visible");
+        document.querySelector(`div.event-info > div.content > div.${selector}`)
+            .classList.add("visible");
     };
 
     const hide_box = (selector) => {
-        document.querySelector(`div.event-info > div.content > div.${selector}`).classList.remove("visible");
+        document.querySelector(`div.event-info > div.content > div.${selector}`)
+            .classList.remove("visible");
     };
 
     const valid_content = new Set(['about', 'register', 'sponsor', 'atl', 'share']);
@@ -207,38 +186,88 @@ window.onload = async () => {
         }
     };
 
-    document.querySelector("input.prompt").addEventListener('input', (e) => { display_section(e.target.value); });
+    const select_line = (line) => {
+        if (selected_line) {
+            document.querySelector(`.hex-commands > svg.${selected_line}`)
+                .classList.remove("selected");
+            document.querySelector(`.hex-commands > img.${selected_line}-on`)
+                .classList.remove("selected");
+            document.querySelector(`.hex-commands > img.${selected_line}`)
+                .classList.remove("selected");
+        }
 
-    document.querySelector(".hex-commands > img.about-on").addEventListener('mouseenter', (e) => {
-        draw_line('about');
+        if (line != selected_line) {
+            selected_line = line;
+
+            document.querySelector(`.hex-commands > svg.${line}`)
+                .classList.add("selected");
+            document.querySelector(`.hex-commands > img.${line}-on`)
+                .classList.add("selected");
+            document.querySelector(`.hex-commands > img.${line}`)
+                .classList.add("selected");
+
+            clearTimeout(text_rendering[line]);
+            text_rendering[line] = setTimeout(() => {
+                document.querySelector("input.prompt").value = line;
+                display_section(line);
+            }, 400);
+        } else {
+            selected_line = undefined;
+        }
+    };
+
+    const on_scroll = async () => {
+        if (!hexes_animated_in && isElementInViewport(hexes)) {
+            const loading_text = document.querySelector(".hex-commands > p");
+
+            const tiles = document.querySelectorAll(
+                ".hex-commands > img.register, " +
+                    ".hex-commands > img.about, " +
+                    ".hex-commands > img.sponsor, " +
+                    ".hex-commands > img.atl, " +
+                    ".hex-commands > img.share"
+            );
+            hexes_animated_in = true;
+
+            await wait(500);
+
+            loading_text.classList.add("fadeout");
+
+            await wait(500);
+
+            for (const tile of tiles) {
+                tile.classList.add("animate");
+            }
+
+            await wait(1000);
+
+            select_line('about');
+        }
+    };
+    document.addEventListener('scroll', on_scroll, false);
+    document.addEventListener('touchmove', on_scroll, false);
+    await on_scroll();
+
+    document.querySelector("input.prompt").addEventListener('input', (e) => {
+        display_section(e.target.value);
     });
-    document.querySelector(".hex-commands > img.about-on").addEventListener('mouseleave', (e) => {
-        clear_line('about');
-    });
-    document.querySelector(".hex-commands > img.register-on").addEventListener('mouseenter', (e) => {
-        draw_line('register');
-    });
-    document.querySelector(".hex-commands > img.register-on").addEventListener('mouseleave', (e) => {
-        clear_line('register');
-    });
-    document.querySelector(".hex-commands > img.sponsor-on").addEventListener('mouseenter', (e) => {
-        draw_line('sponsor');
-    });
-    document.querySelector(".hex-commands > img.sponsor-on").addEventListener('mouseleave', (e) => {
-        clear_line('sponsor');
-    });
-    document.querySelector(".hex-commands > img.atl-on").addEventListener('mouseenter', (e) => {
-        draw_line('atl');
-    });
-    document.querySelector(".hex-commands > img.atl-on").addEventListener('mouseleave', (e) => {
-        clear_line('atl');
-    });
-    document.querySelector(".hex-commands > img.share-on").addEventListener('mouseenter', (e) => {
-        draw_line('share');
-    });
-    document.querySelector(".hex-commands > img.share-on").addEventListener('mouseleave', (e) => {
-        clear_line('share');
-    });
+
+    for (const line of ['about', 'register', 'sponsor', 'atl', 'share']) {
+        document.querySelector(`.hex-commands > img.${line}-on`)
+            .addEventListener('mouseenter', (e) => {
+                draw_line(line);
+        });
+
+        document.querySelector(`.hex-commands > img.${line}-on`)
+            .addEventListener('mouseleave', (e) => {
+                clear_line(line);
+        });
+
+        document.querySelector(`.hex-commands > img.${line}-on`)
+            .addEventListener('click', (e) => {
+                select_line(line);
+            });
+    }
 
     await writeText(document.getElementById("intro-text"));
     document.getElementsByClassName("cover")[0].classList.add("hidden");
