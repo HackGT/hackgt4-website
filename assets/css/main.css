@@ -39,11 +39,6 @@ html, body, section {
     background-color: #081517;
 }
 
-#logo {
-	height: auto;
-    width: 100px;
-}
-
 section.hidden {
     display: none;
 }
@@ -68,10 +63,26 @@ section.hidden {
     margin: 0 auto;
     max-width: 1000px;
 }
-main {
+header {
+    line-height: 125px;
+    justify-content: center;
+}
+header > h1 {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 4em;
+}
+#logo {
+	height: 100%;
+    width: 100px;
+}
+
+header, main {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
+}
+main {
+    margin-top: 15px;
 }
 main > section {
     width: 100%;
