@@ -2,7 +2,6 @@ import _ from "underscore";
 import THREE from "three";
 import RenderPass from "../lib/postprocessing/RenderPass.js";
 import EffectComposer from "../lib/postprocessing/EffectComposer.js";
-import TrackballControls from "../lib/TrackballControls.js";
 
 class Renderer {
     constructor(opts) {
@@ -17,20 +16,6 @@ class Renderer {
             opts.camera.near || 0.1,
             opts.camera.far || 1000
         );
-
-        if (opts.debug) {
-            // When debugging is on, allow trackball controls
-            this.debug = opts.debug;
-            this.controls = new TrackballControls(this.camera);
-            this.controls.rotateSpeed = 1.0;
-            this.controls.zoomSpeed = 1.2;
-            this.controls.panSpeed = 0.8;
-            this.controls.noZoom = false;
-            this.controls.noPan = false;
-            this.controls.staticMoving = true;
-            this.controls.dynamicDampingFactor = 0.3;
-            this.controls.keys = [65, 83, 68];
-        }
 
         // Append to DOM
         this.renderer.setSize(window.innerWidth, window.innerHeight);

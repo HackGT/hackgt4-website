@@ -1,5 +1,4 @@
 import THREE from "three";
-import _ from "underscore";
 
 class Timer {
     constructor(opts) {

@@ -1,9 +1,6 @@
-import Cube from "./cube.js";
 import Renderer from "./renderer.js";
 import Timer from "./timer.js";
 import GlitchPass from "../lib/postprocessing/GlitchPass.js";
-import DotScreenShader from "../lib/shaders/DotScreenShader.js";
-import ShaderPass from "../lib/postprocessing/ShaderPass.js";
 import * as KenneyFuture from "../assets/fonts/kenney_future.json";
 
 import THREE from "three";
