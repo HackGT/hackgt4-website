@@ -4,14 +4,9 @@ function wait(milliseconds: number) {
     });
 }
 
-async function writeText(container: HTMLElement) {
+async function writeText(container: HTMLElement, text: string[]) {
     await wait(500);
-
-    const introText = [
-        "Initializing......",
-        "Welcome to HackGT: New Heights"
-    ];
-    for (let line of introText) {
+    for (let line of text) {
         container.textContent = "";
         for (let char of line) {
             container.textContent += char;
@@ -29,13 +24,23 @@ async function writeText(container: HTMLElement) {
     await wait(500);
 }
 
-window.onload = async () => {
-    "use strict";
-    
-    document.body.addEventListener("keypress", (event) => {
-        document.getElementsByClassName("cover")[0].classList.add("hidden");
-    });
-    
-    await writeText(document.getElementById("intro-text")!);
+let showMainRun: boolean = false;
+async function showMain() {
+    if (showMainRun) return;
+    showMainRun = true;
+
     document.getElementsByClassName("cover")[0].classList.add("hidden");
+    await writeText(document.getElementById("system-active")!, [
+        "// HackGT System Active"
+    ]);
+}
+
+window.onload = async () => {
+    document.body.addEventListener("keypress", showMain);
+    document.body.addEventListener("click", showMain);
+    
+    writeText(document.getElementById("intro-text")!, [
+        "Initializing......",
+        "Welcome to HackGT 4: New Heights"
+    ]).then(showMain);
 };

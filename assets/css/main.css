@@ -6,36 +6,49 @@
 body {
     margin: 0;
 }
+html, body, section {
+    background-color: #081517;
+}
 
 section.hidden {
     display: none;
 }
 
 .cover {
+    z-index: 2;
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #081517;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.main {
+    display: flex;
+    flex-direction: column;
+}
 
-#intro-text {
+code.console {
     background-color: initial;
     color: #8dbcf1;
     text-shadow: 0px 0px 25px #1c3093;
     font-family: "VT323";
-    font-size: 3.5em;
+    font-size: 2.5em;
     padding: 0;
     line-height: 1.5em;
     user-select: none;
 }
+.cover > code.console {
+    font-size: 3.5em;
+}
+#system-active {
+    margin: 0 20px;
+}
 
-#intro-text::after {
+code.console::after {
     display: inline-block;
     opacity: 1;
     content: "";
@@ -45,7 +58,7 @@ section.hidden {
     position: relative;
     top: 0.1em;
 }
-#intro-text.idle::after {
+code.console.idle::after {
     animation: 1s blink infinite;
 }
 
@@ -90,3 +103,27 @@ input[type="text"]::-moz-selection {
   background: #b4fff3; /* Gecko Browsers */
 }
 
+nav > * {
+    height: 74px;
+    line-height: 74px;
+    padding-left: 85px;
+    background-repeat: no-repeat;
+    background-size: 64px 74px;
+    font-family: "KenneyFuture";
+    color: #b4fff3;
+}
+nav > .register {
+    background-image: url("/assets/2017Website/Tile2.png");   
+}
+nav > .about {
+    background-image: url("/assets/2017Website/Tile3.png");
+}
+nav > .sponsor {
+    background-image: url("/assets/2017Website/Tile4.png");
+}
+nav > .atl {
+    background-image: url("/assets/2017Website/Tile5.png");
+}
+nav > .share {
+    background-image: url("/assets/2017Website/Tile6.png");
+}
