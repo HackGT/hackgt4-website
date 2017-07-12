@@ -29,13 +29,16 @@ async function showMain() {
     if (showMainRun) return;
     showMainRun = true;
 
+    document.body.classList.remove("covered");
     document.getElementsByClassName("cover")[0].classList.add("hidden");
+    document.getElementsByTagName("nav")[0].classList.add("show");
     await writeText(document.getElementById("system-active")!, [
         "// HackGT System Active"
     ]);
 }
 
 window.onload = async () => {
+    window.scrollTo(0, 0);
     document.body.addEventListener("keypress", showMain);
     document.body.addEventListener("click", showMain);
     
@@ -43,4 +46,10 @@ window.onload = async () => {
         "Initializing......",
         "Welcome to HackGT 4: New Heights"
     ]).then(showMain);
+
+    let sections: { [key: string]: Element } = {};
+    for (let i = 0, rawSections = document.querySelectorAll("main > section"); i < rawSections.length; i++) {
+        sections[rawSections[i].id] = rawSections[i];
+    }
+    
 };

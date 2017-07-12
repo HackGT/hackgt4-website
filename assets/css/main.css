@@ -3,6 +3,35 @@
     src: url(../fonts/KennyFuture.ttf);
 }
 
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+body.covered {
+    overflow: hidden;
+}
 body {
     margin: 0;
 }
@@ -26,9 +55,24 @@ section.hidden {
     justify-content: center;
     align-items: center;
 }
-.main {
+.container {
     display: flex;
     flex-direction: column;
+
+    padding: 0 10px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+main > section {
+    width: 100%;
+    text-align: center;
+    margin: 0 25px;
+    border: 2px solid #b4fff3;
 }
 
 code.console {
@@ -44,9 +88,6 @@ code.console {
 .cover > code.console {
     font-size: 3.5em;
 }
-#system-active {
-    margin: 0 20px;
-}
 
 code.console::after {
     display: inline-block;
@@ -60,15 +101,6 @@ code.console::after {
 }
 code.console.idle::after {
     animation: 1s blink infinite;
-}
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
 }
 
 input[type="text"], input[type="email"] {
@@ -103,27 +135,93 @@ input[type="text"]::-moz-selection {
   background: #b4fff3; /* Gecko Browsers */
 }
 
-nav > * {
+nav > .item {
     height: 74px;
     line-height: 74px;
     padding-left: 85px;
     background-repeat: no-repeat;
     background-size: 64px 74px;
     font-family: "KenneyFuture";
+    font-size: 1.5em;
     color: #b4fff3;
+    opacity: 0;
+    cursor: pointer;
 }
+.divider {
+    display: block;
+    height: 74px;
+    width: 64px;
+    background-image: url("/assets/2017Website/TileBack.png");
+    background-repeat: no-repeat;
+    background-size: 64px 74px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    position: relative;
+}
+.divider:nth-of-type(even) {
+    left: -30px;
+}
+.divider:nth-of-type(odd) {
+    left: 30px;
+}
+nav.show > .item {
+    animation: 1s fade-in forwards;
+}
+/* CSS image preloading hack */
+nav::after {
+    display: none;
+    content: url("/assets/2017Website/Tile2.png") url("/assets/2017Website/Tile2Highlight.png") url("/assets/2017Website/Tile3.png") url("/assets/2017Website/Tile3Highlight.png") url("/assets/2017Website/Tile4.png") url("/assets/2017Website/Tile4Highlight.png") url("/assets/2017Website/Tile5.png") url("/assets/2017Website/Tile5Highlight.png") url("/assets/2017Website/Tile6.png") url("/assets/2017Website/Tile6Highlight.png");
+}
+
 nav > .register {
-    background-image: url("/assets/2017Website/Tile2.png");   
+    background-image: url("/assets/2017Website/Tile2.png");
+    animation-delay: 100ms;
 }
+nav > .register:hover, nav > .register.active {
+    background-image: url("/assets/2017Website/Tile2Highlight.png");
+}
+
 nav > .about {
     background-image: url("/assets/2017Website/Tile3.png");
+    animation-delay: 200ms;
 }
+nav > .about:hover, nav > .about.active {
+    background-image: url("/assets/2017Website/Tile3Highlight.png");
+}
+
 nav > .sponsor {
     background-image: url("/assets/2017Website/Tile4.png");
+    animation-delay: 300ms;
 }
+nav > .sponsor:hover, nav > .sponsor.active {
+    background-image: url("/assets/2017Website/Tile4Highlight.png");
+}
+
 nav > .atl {
     background-image: url("/assets/2017Website/Tile5.png");
+    animation-delay: 400ms;
 }
+nav > .atl:hover, nav > .atl.active {
+    background-image: url("/assets/2017Website/Tile5Highlight.png");
+}
+
 nav > .share {
     background-image: url("/assets/2017Website/Tile6.png");
+    animation-delay: 500ms;
+}
+nav > .share:hover, nav > .share.active {
+    background-image: url("/assets/2017Website/Tile6Highlight.png");
+}
+
+h1, p, a {
+    font-family: "KenneyFuture";
+    color: white;
+}
+a.button {
+    display: inline-block;
+    border-radius: 0px;
+    border: 2px solid #b4fff3;
+    background: none;
+    text-decoration: none;
+    padding: 10px;
 }

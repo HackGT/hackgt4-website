@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|VT323"/>
         <link rel="stylesheet" href="./assets/css/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="./assets/css/normalize.css"/>
-		<link rel="stylesheet" href="./assets/css/bulma.css"/>
+		<!-- <link rel="stylesheet" href="./assets/css/bulma.css"/> -->
 		<link rel="stylesheet" href="./assets/css/main.css"/>
 		<link rel="icon" href="./favicon.ico"/>
 		<meta property="og:url" content="https://hack.gt"/>
@@ -20,19 +20,34 @@
 		<!--Have to update the url and image when we deploy-->
 		<title>HackGT 4: New Heights | October 13-15 2017 | Georgia Tech</title>
     </head>
-    <body>
+    <body class="covered">
         <section class="cover">
             <code id="intro-text" class="console"></code>
         </section>
-        <section class="main">
+        <section class="container">
             <code id="system-active" class="console"></code>
-            <nav>
-                <div class="register">Register</div>
-                <div class="about">About</div>
-                <div class="sponsor">Sponsor</div>
-                <div class="atl">ATL</div>
-                <div class="share">Share</div>
-            </nav>
+            <main>
+                <nav>
+                    <div class="item register active" data-href="register">Register</div>
+                    <span class="divider"></span>
+                    <div class="item about" data-href="about">About</div>
+                    <span class="divider"></span>
+                    <div class="item sponsor" data-href="sponsor">Sponsor</div>
+                    <span class="divider"></span>
+                    <div class="item atl" data-href="atl">ATL</div>
+                    <span class="divider"></span>
+                    <div class="item share" data-href="share">Share</div>
+                </nav>
+                <section id="register">
+                    <h1>Register</h1>
+                    <p>Apply for HackGT by ${DATE_HERE}</p>
+                    <a href="https://registration.dev.hack.gt" class="button">Apply</a>
+                </section>
+                <section id="about hidden">
+                    <h1>About</h1>
+                    <p>Example content</p>
+                </section>
+            </main>
         </section>
     </body>
 </html>
