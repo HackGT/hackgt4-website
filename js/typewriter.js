@@ -1,5 +1,4 @@
 import THREE from "three";
-import _ from "underscore";
 
 class Typewriter {
     constructor(opts) {
@@ -53,7 +52,7 @@ class Typewriter {
             portion = this.text.length;
 
             // Notify that the animation has ended
-            if (_.isFunction(this.after)) {
+            if (this.after instanceof Function) {
                 this.after();
                 delete this.after;
             }

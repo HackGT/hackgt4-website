@@ -74,50 +74,36 @@ window.onload = async () => {
         }
     });
 
-    // instantiate a loader
-    var loader = new THREE.TextureLoader();
-
-    // Load the background texture
-    loader.load(
-	    // resource URL
-	    './assets/sky.jpg',
-	    // Function when resource is loaded
-	    function (texture) {
-            var backgroundMesh = new THREE.Mesh(
-                new THREE.PlaneGeometry(2000, 1000, 0),
-                new THREE.MeshBasicMaterial({
-                    map: texture
-                }));
-
-            backgroundMesh.position.x = 0;
-            backgroundMesh.position.y = -50;
-            backgroundMesh.position.z = -200;
-            backgroundMesh.rotation.x = 0;
-            backgroundMesh.rotation.y = Math.PI * 2;
-
-            engine.add({
-                mesh: backgroundMesh,
-                update: () => {}
-            });
-
-            engine.add(text);
-	    },
-	    // Function called when download progresses
-	    function (xhr) {
-		    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-	    },
-	    // Function called when download errors
-	    (xhr) => {
-		    console.log('An error happened', xhr);
-	    }
-    );
-
     // Position and rotate to face us.
     // text.mesh.position.x = middle;
     text.mesh.position.y = 0;
     text.mesh.position.z = 100;
     text.mesh.rotation.x = -0.3;
     text.mesh.rotation.y = Math.PI * 2;
+
+	const texture = new THREE.Texture();
+	texture.image = document.querySelector('.star-sky');
+	texture.format = THREE.RGBFormat;
+	texture.needsUpdate = true;
+
+    const backgroundMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(2000, 1000, 0),
+        new THREE.MeshBasicMaterial({
+            map: texture
+        }));
+
+    backgroundMesh.position.x = 0;
+    backgroundMesh.position.y = -50;
+    backgroundMesh.position.z = -200;
+    backgroundMesh.rotation.x = 0;
+    backgroundMesh.rotation.y = Math.PI * 2;
+
+    engine.add({
+        mesh: backgroundMesh,
+        update: () => {}
+    });
+
+    engine.add(text);
 
     const glitchPass = new GlitchPass();
     glitchPass.renderToScreen = true;
