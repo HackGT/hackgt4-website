@@ -4,43 +4,40 @@ function wait(milliseconds) {
     });
 }
 
-async function writeIntroText() {
-    const introTextContainer = document.getElementById("intro-text");
+async function writeText(container) {
     await wait(500);
 
     const introText = [
         "Initializing......",
-        "Well, here we are."
+        "Well, here we are.",
+        "Welcome to HackGT: New Heights"
     ];
     for (let line of introText) {
-        introTextContainer.textContent = "";
+        container.textContent = "";
         for (let char of line) {
-            introTextContainer.textContent += char;
+            container.textContent += char;
             let waitTime = Math.random() * 20 + 100;
             if ([",", ".", "!", "?", "\n"].indexOf(char) !== -1) {
                 waitTime *= 3;
             }
             await wait(waitTime);
         }
-        introTextContainer.classList.add("idle");
+        container.classList.add("idle");
         await wait(1000);
-        introTextContainer.classList.remove("idle");
+        container.classList.remove("idle");
     }
-    introTextContainer.classList.add("idle");
+    container.classList.add("idle");
+    await wait(500);
 }
 
 window.onload = async () => {
     "use strict";
     
-    writeIntroText();
-
+    
     document.body.addEventListener("keypress", (event) => {
-        let height = Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0);
-        if (window.scrollY < height / 2) {
-            jump('.event-info');
-        }
+        document.getElementsByClassName("cover")[0].classList.add("hidden");
     });
+    
+    await writeText(document.getElementById("intro-text"));
+    document.getElementsByClassName("cover")[0].classList.add("hidden");
 };
-
