@@ -177,6 +177,7 @@ window.onload = async () => {
         }
         text_rendering[line] = setTimeout(() => {
             document.querySelector("input.prompt").value = line;
+            display_section(line);
         }, 400);
     };
 
@@ -184,6 +185,25 @@ window.onload = async () => {
         document.querySelector(`.hex-commands > svg.${line}`).classList.remove("draw");
         clearTimeout(text_rendering[line]);
     };
+
+    const show_box = (selector) => {
+        document.querySelector(`div.event-info > div.content > div.${selector}`).classList.add("visible");
+    };
+
+    const hide_box = (selector) => {
+        document.querySelector(`div.event-info > div.content > div.${selector}`).classList.remove("visible");
+    };
+
+    const valid_content = new Set(['about', 'register', 'sponsor', 'atl', 'share']);
+    const display_section = (selector) => {
+        valid_content.forEach(hide_box);
+        selector = selector.toLowerCase();
+        if (valid_content.has(selector)) {
+            show_box(selector);
+        }
+    }
+
+    document.querySelector("input.prompt").addEventListener('input', (e) => { display_section(e.target.value); });
 
     document.querySelector(".hex-commands > img.about-on").addEventListener('mouseenter', (e) => {
         draw_line('about');
