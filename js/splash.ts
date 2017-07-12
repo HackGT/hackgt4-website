@@ -52,6 +52,7 @@ async function showMain() {
         else {
             writeText(countdown, ["October 13–15, 2017"]);
         }
+        interval++;
     }, 8000);
 }
 
@@ -75,5 +76,21 @@ window.onload = async () => {
     for (let i = 0, rawSections = document.querySelectorAll("main > section"); i < rawSections.length; i++) {
         sections[rawSections[i].id] = rawSections[i];
     }
-
+    for (let i = 0, rawTabs = document.querySelectorAll("nav > .item"); i < rawTabs.length; i++) {
+        rawTabs[i].addEventListener("click", () => {
+            let target = document.getElementById((rawTabs[i] as HTMLElement).dataset.href!);
+            if (!target) {
+                console.warn(`${(rawTabs[i] as HTMLElement).dataset.href} doesn't exist`);
+                return;
+            }
+            for (let sectionID in sections) {
+                sections[sectionID].classList.add("hidden");
+            }
+            target.classList.remove("hidden");
+            for (let j = 0; j < rawTabs.length; j++) {
+                rawTabs[j].classList.remove("active");
+            }
+            rawTabs[i].classList.add("active");
+        });
+    }
 };
