@@ -315,6 +315,7 @@ section.hidden {
     top: 0;
     left: 0;
     width: 100vw;
+    overflow: hidden;
     height: 100vh;
     /* background-color: #081517; */
     /* background: url(../sky.jpg); */
