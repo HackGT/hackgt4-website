@@ -6,7 +6,10 @@ function wait(milliseconds: number) {
     });
 }
 
+let writeTextRunning: boolean = false;
 async function writeText(container: HTMLElement, text: string[], lineWaitTime: number = 1000) {
+    if (writeTextRunning) return;
+    writeTextRunning = true;
     await wait(500);
     container.classList.remove("idle");
     for (let line of text) {
@@ -25,12 +28,14 @@ async function writeText(container: HTMLElement, text: string[], lineWaitTime: n
     }
     container.classList.add("idle");
     await wait(500);
+    writeTextRunning = false;
 }
 
 let showMainRun: boolean = false;
 async function showMain() {
     if (showMainRun) return;
     showMainRun = true;
+    writeTextRunning = false;
 
     document.body.classList.remove("covered");
     document.getElementsByClassName("cover")[0].classList.add("hidden");
@@ -44,16 +49,18 @@ async function showMain() {
     const countdown = document.getElementById("countdown")!;
     countdown.classList.remove("hidden");
     let interval = 0;
-    writeText(countdown, ["October 13–15, 2017"]);
-    setInterval(() => {
+    while (true) {
         if (interval % 2 === 0) {
-            writeText(countdown, [generateCountdownText()]);
+            writeText(countdown, ["October 13–15, 2017"]);
+            console.log(Date.now());
         }
         else {
-            writeText(countdown, ["October 13–15, 2017"]);
+            writeText(countdown, [generateCountdownText()]);
+            console.log(Date.now());
         }
         interval++;
-    }, 8000);
+        await wait(8000);
+    }
 }
 
 function generateCountdownText(): string {
