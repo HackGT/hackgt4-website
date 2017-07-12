@@ -166,6 +166,10 @@ window.onload = async () => {
     window.addEventListener('scroll', on_scroll);
     on_scroll();
 
+    document.querySelector("p.skip-intro").addEventListener('click', (e) => {
+        document.getElementsByClassName("cover")[0].classList.add("hidden");
+    });
+
     let text_rendering = {};
 
     const draw_line = (line) => {

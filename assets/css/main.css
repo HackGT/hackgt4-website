@@ -15,13 +15,14 @@ body {
     height: 100%;
 }
 
-#splash-parent div.is-overlay p {
-    margin-bottom: 10vh;
+#splash-parent div.is-overlay p, section.cover div.is-overlay p {
+    padding: 10vh;
     font-family: KenneyFuture;
     font-size: 2rem;
+    color: white;
 }
 
-div.is-overlay {
+#splash-parent div.is-overlay, section.cover div.is-overlay {
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
@@ -345,7 +346,7 @@ section.hidden {
 }
 
 @media only screen and (max-width: 500px) {
-    #splash-parent div.is-overlay p {
+    #splash-parent div.is-overlay p, section.cover div.is-overlay p {
         font-size: 1rem;
     }
 
