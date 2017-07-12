@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# HACKGPROJECT VERSION: c42c0b535e813447bcb881a9c3685bf38c797356
+# HACKGPROJECT VERSION: edd79b515aab77112179e2bf4aacb584c1935c81
 set -euo pipefail
 PROJECT_TYPE="static"
 ORG_NAME="HackGT"
@@ -87,6 +87,9 @@ commit_to_branch() {
     local git_rev=$(git rev-parse --short HEAD)
     git config user.name 'Michael Eden'
     git config user.email 'themichaeleden@gmail.com'
+    git remote remove origin
+    git remote add origin \
+        "https://${GH_TOKEN}@github.com/${ORG_NAME}/${image_name}.git"
     git fetch origin
     git reset "origin/$branch" || git checkout -b "$branch"
     git add -A .
