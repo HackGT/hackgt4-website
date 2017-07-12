@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# HACKGPROJECT VERSION: edd79b515aab77112179e2bf4aacb584c1935c81
+# HACKGPROJECT VERSION: 8d093bf863f63c05dcfebbb8f72abcbdc35a990b
 set -euo pipefail
 PROJECT_TYPE="static"
 ORG_NAME="HackGT"
@@ -28,6 +28,7 @@ build_project_source() {
         local build_image_name="$(basename $(pwd))-build"
         $docker build -f Dockerfile.build --rm -t "$build_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$build_image_name"
+        sudo chown -R $(id -u):$(id -g) .
     fi
 }
 
@@ -36,6 +37,7 @@ test_project_source() {
         local test_image_name="$(basename $(pwd))-test"
         $docker build -f Dockerfile.test --rm -t "$test_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$test_image_name"
+        sudo chown -R $(id -u):$(id -g) .
     fi
 }
 
