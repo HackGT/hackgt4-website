@@ -121,8 +121,10 @@ window.onload = () => {
     const hexes = document.getElementsByClassName("hex-commands")[0];
     let hexes_animated_in = false;
 
-    window.addEventListener('scroll', (event) => {
+    const on_scroll = () => {
         if (!hexes_animated_in && isElementInViewport(hexes)) {
+            const loading_text = document.querySelector(".hex-commands > p");
+
             const tiles = document.querySelectorAll(
                 ".hex-commands > img.register, " +
                 ".hex-commands > img.about, " +
@@ -131,12 +133,65 @@ window.onload = () => {
                 ".hex-commands > img.share"
             );
 
-            for (const tile of tiles) {
-                tile.className += " animate";
-            }
+            setTimeout(() => {
+                loading_text.classList.add("fadeout");
+                setTimeout(() => {
+                    for (const tile of tiles) {
+                        tile.classList.add("animate");
+                    }
+                }, 500);
+            }, 500);
 
             hexes_animated_in = true;
         }
+    };
+    window.addEventListener('scroll', on_scroll);
+    on_scroll();
+
+    let text_rendering = {};
+
+    const draw_line = (line) => {
+        document.querySelector(`.hex-commands > svg.${line}`).classList.add("draw");
+        document.querySelector("input.prompt").value = "";
+        text_rendering[line] = setTimeout(() => {
+            document.querySelector("input.prompt").value = line;
+        }, 400);
+    };
+
+    const clear_line = (line) => {
+        document.querySelector(`.hex-commands > svg.${line}`).classList.remove("draw");
+        clearTimeout(text_rendering[line]);
+    };
+
+    document.querySelector(".hex-commands > img.about-on").addEventListener('mouseenter', (e) => {
+        draw_line('about');
+    });
+    document.querySelector(".hex-commands > img.about-on").addEventListener('mouseleave', (e) => {
+        clear_line('about');
+    });
+    document.querySelector(".hex-commands > img.register-on").addEventListener('mouseenter', (e) => {
+        draw_line('register');
+    });
+    document.querySelector(".hex-commands > img.register-on").addEventListener('mouseleave', (e) => {
+        clear_line('register');
+    });
+    document.querySelector(".hex-commands > img.sponsor-on").addEventListener('mouseenter', (e) => {
+        draw_line('sponsor');
+    });
+    document.querySelector(".hex-commands > img.sponsor-on").addEventListener('mouseleave', (e) => {
+        clear_line('sponsor');
+    });
+    document.querySelector(".hex-commands > img.atl-on").addEventListener('mouseenter', (e) => {
+        draw_line('atl');
+    });
+    document.querySelector(".hex-commands > img.atl-on").addEventListener('mouseleave', (e) => {
+        clear_line('atl');
+    });
+    document.querySelector(".hex-commands > img.share-on").addEventListener('mouseenter', (e) => {
+        draw_line('share');
+    });
+    document.querySelector(".hex-commands > img.share-on").addEventListener('mouseleave', (e) => {
+        clear_line('share');
     });
 };
 
