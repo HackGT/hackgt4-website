@@ -315,14 +315,21 @@ section.hidden {
     top: 0;
     left: 0;
     width: 100vw;
+    overflow: hidden;
     height: 100vh;
     /* background-color: #081517; */
-    background: url(../sky.jpg);
-    background-size: cover;
+    /* background: url(../sky.jpg); */
+    /* background-size: cover; */
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cover .star-sky {
+    z-index: -1;
+    height: 100%;
+    width: auto;
 }
 
 #intro-text {
@@ -379,4 +386,12 @@ section.hidden {
     div.event-info > div.content > div {
         width: 90vw;
     }
+}
+
+.is-overlay {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

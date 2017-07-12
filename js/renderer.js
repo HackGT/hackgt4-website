@@ -1,4 +1,3 @@
-import _ from "underscore";
 import THREE from "three";
 import RenderPass from "../lib/postprocessing/RenderPass.js";
 import EffectComposer from "../lib/postprocessing/EffectComposer.js";
@@ -58,9 +57,9 @@ class Renderer {
 
         // Update objects
         setImmediate(() => {
-            _.each(this.renderables, (update) => {
-                update(this.state);
-            });
+            for (const update of Object.keys(this.renderables)) {
+                this.renderables[update](this.state);
+            }
             this.state.ticks += 1;
 
             if (this.controls) {
