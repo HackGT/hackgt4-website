@@ -1,7 +1,7 @@
 var path = require("path");
 
 module.exports = {
-    entry: "./js/splash.js",
+    entry: ["babel-polyfill", "./js/splash.js"],
     output: {
         path: __dirname,
         filename: "bundle.js",

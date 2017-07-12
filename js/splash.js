@@ -9,7 +9,39 @@ import * as KenneyFuture from "../assets/fonts/kenney_future.json";
 import THREE from "three";
 import jump from "jump.js";
 
-window.onload = () => {
+function wait(milliseconds) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, milliseconds);
+    });
+}
+
+async function writeText(container) {
+    await wait(500);
+
+    const introText = [
+        "Initializing......",
+        "Well, here we are.",
+        "Welcome to HackGT: New Heights"
+    ];
+    for (let line of introText) {
+        container.textContent = "";
+        for (let char of line) {
+            container.textContent += char;
+            let waitTime = Math.random() * 20 + 100;
+            if ([",", ".", "!", "?", "\n"].indexOf(char) !== -1) {
+                waitTime *= 3;
+            }
+            await wait(waitTime);
+        }
+        container.classList.add("idle");
+        await wait(1000);
+        container.classList.remove("idle");
+    }
+    container.classList.add("idle");
+    await wait(500);
+}
+
+window.onload = async () => {
     "use strict";
 
     const engine = new Renderer({
@@ -21,7 +53,6 @@ window.onload = () => {
         antialias: true
         // debug: true
     });
-
     engine.camera.position.set(0, 0, 1000);
     engine.camera.lookAt(new THREE.Vector3(0, 0, 0));
     engine.render();
@@ -97,14 +128,6 @@ window.onload = () => {
     glitchPass.renderToScreen = true;
     engine.composer.addPass(glitchPass);
 
-    document.body.addEventListener("keypress", (event) => {
-        let height = Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0);
-        if (window.scrollY < height / 2) {
-            jump('.event-info');
-        }
-    });
 
     const isElementInViewport = (el) => {
         const rect = el.getBoundingClientRect();
@@ -193,5 +216,7 @@ window.onload = () => {
     document.querySelector(".hex-commands > img.share-on").addEventListener('mouseleave', (e) => {
         clear_line('share');
     });
-};
 
+    await writeText(document.getElementById("intro-text"));
+    document.getElementsByClassName("cover")[0].classList.add("hidden");
+};
