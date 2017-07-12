@@ -3,6 +3,10 @@
     src: url(../fonts/KennyFuture.ttf);
 }
 
+body {
+    font-family: KenneyFuture;
+}
+
 #splash-canvas {
     position: absolute;
     top: 0px;
@@ -24,7 +28,7 @@
     top: 66%;
 
     /* Safari 5.1-6 */
-    background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); 
+    background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
     /* Opera 11.1-12 */
     background: -o-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
     /* Firefox 3.6-15 */
@@ -55,6 +59,37 @@ div.event-info {
     left: 0px;
     right: 0px;
     top: 100vh;
+}
+
+div.event-info > div.content > div {
+    display: block;
+    width: 400px;
+    padding: 1em;
+    border-right: 2px solid #b4fff3;
+    border-left: 2px solid #b4fff3;
+    border-bottom: 2px solid #b4fff3;
+    display: none;
+    color: white;
+    box-shadow:
+        1px 1px 1px 1px #b4fff3,
+        -1px 1px 1px 1px #b4fff3,
+        1px -1px 1px 1px #b4fff3,
+        -1px -1px 1px 1px #b4fff3;
+}
+
+div.event-info > div.content > div h2 {
+    color: white;
+}
+
+div.event-info > div.content > div.visible {
+    display: block;
+}
+
+.button {
+    color: white;
+    border-radius: 0px;
+    border: 2px solid #b4fff3;
+    background: none;
 }
 
 input[type="text"], input[type="email"] {
@@ -134,7 +169,7 @@ body {
 input[type=text].prompt {
     margin-top: 0px;
     padding-top: 0px;
-    width: 400px;
+    max-width: 400px;
 }
 
 .hex-commands > img {
