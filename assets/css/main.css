@@ -5,6 +5,7 @@
 
 body {
     font-family: KenneyFuture;
+    overflow-x: idden;
 }
 
 #splash-canvas {
@@ -15,8 +16,15 @@ body {
     height: 100%;
 }
 
-#splash-parent div.is-overlay p, section.cover div.is-overlay p {
+section.cover div.is-overlay p {
     padding: 10vh;
+}
+
+#splash-parent div.is-overlay p {
+    padding-bottom: 10vh;
+}
+    
+#splash-parent div.is-overlay p, section.cover div.is-overlay p {
     font-family: KenneyFuture;
     font-size: 2rem;
     color: white;
