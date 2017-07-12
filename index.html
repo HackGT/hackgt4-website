@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Splash</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         <script src="bundle.js"></script>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|VT323"/>
@@ -28,6 +29,7 @@
             <code id="system-active" class="console"></code>
             <main>
                 <nav>
+                    <!-- <img id="logo" alt="HackGT" src="/assets/2017Website/logo.png" /> -->
                     <div class="item register active" data-href="register">Register</div>
                     <span class="divider"></span>
                     <div class="item about" data-href="about">About</div>
@@ -43,11 +45,12 @@
                     <p>Apply for HackGT by ${DATE_HERE}</p>
                     <a href="https://registration.dev.hack.gt" class="button">Apply</a>
                 </section>
-                <section id="about hidden">
+                <section id="about" class="hidden">
                     <h1>About</h1>
                     <p>Example content</p>
                 </section>
             </main>
+            <code id="countdown" class="console hidden"></code>
         </section>
     </body>
 </html>
