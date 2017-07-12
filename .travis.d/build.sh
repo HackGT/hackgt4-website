@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# HACKGPROJECT VERSION: 8d093bf863f63c05dcfebbb8f72abcbdc35a990b
+# HACKGPROJECT VERSION: fc4e966bc922a19cc8dffe56ea2f9d82ec034d86
 set -euo pipefail
 PROJECT_TYPE="static"
 ORG_NAME="HackGT"
