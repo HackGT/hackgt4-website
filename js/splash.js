@@ -128,11 +128,12 @@ window.onload = async () => {
         const rect = el.getBoundingClientRect();
         return (
             rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight
-                                || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth
-                               || document.documentElement.clientWidth)
+            rect.bottom <= (window.innerHeight
+                            || document.documentElement.clientHeight)
+            // We do not check this since sometimes it gets cut on mobile
+            // rect.left >= 0 &&
+            // && rect.right <= (window.innerWidth
+            //                || document.documentElement.clientWidth)
         );
     };
 
@@ -163,7 +164,8 @@ window.onload = async () => {
             hexes_animated_in = true;
         }
     };
-    window.addEventListener('scroll', on_scroll);
+    document.addEventListener('scroll', on_scroll, false);
+    document.addEventListener('touchmove', on_scroll, false);
     on_scroll();
 
     document.querySelector("p.skip-intro").addEventListener('click', (e) => {
