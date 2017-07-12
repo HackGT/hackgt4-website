@@ -44,7 +44,7 @@ class Timer {
     update_time() {
         let diff = Math.abs(new Date() - this.target_date);
 
-        if (this.old_diff != diff) {
+        if (Math.floor(this.old_diff / 1000) != Math.floor(diff / 1000)) {
             // Cleanup old mesh
             this.mesh.remove(this.text_mesh);
             this.text_mesh.geometry.dispose();

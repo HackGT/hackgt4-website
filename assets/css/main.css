@@ -97,3 +97,141 @@ body {
     background: black;
 }
 
+.hex-commands svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.hex-commands {
+    margin-top: 50px;
+    position: relative;
+    width: 392px;
+    height: 250px;
+}
+
+input[type=text].prompt {
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 400px;
+}
+
+.hex-commands > img {
+    width: 64px;
+    position: absolute;
+    height: auto;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+
+.hex-commands > img.animate {
+    -webkit-animation: fadein 1s; /* Safari 4.0 - 8.0 */
+    animation: fadein 1s;
+    animation-fill-mode: forwards;
+}
+
+.hex-commands > img.animate.register {
+    -webkit-animation-delay: 0.1s; /* Safari 4.0 - 8.0 */
+    animation-delay: 0.1s;
+}
+
+.hex-commands > img.animate.sponsor {
+    -webkit-animation-delay: 0.2s; /* Safari 4.0 - 8.0 */
+    animation-delay: 0.2s;
+}
+
+.hex-commands > img.animate.atl {
+    -webkit-animation-delay: 0.3s; /* Safari 4.0 - 8.0 */
+    animation-delay: 0.3s;
+}
+
+.hex-commands > img.animate.share {
+    -webkit-animation-delay: 0.4s; /* Safari 4.0 - 8.0 */
+    animation-delay: 0.4s;
+}
+
+.hex-commands > img.about, .hex-commands > img.about-on {
+    top: 59px;
+    left: 100px;
+}
+
+.hex-commands > img.register, .hex-commands > img.register-on {
+    top: 115px;
+    left: 132px;
+}
+
+.hex-commands > img.sponsor, .hex-commands > img.sponsor-on {
+    top: 115px;
+    left: 197px;
+}
+
+.hex-commands > img.atl, .hex-commands > img.atl-on {
+    top: 59px;
+    left: 228px;
+}
+
+.hex-commands > img.share, .hex-commands > img.share-on {
+    top: 2px;
+    left: 197px;
+}
+
+.hex-commands > img.register-on,
+.hex-commands > img.about-on,
+.hex-commands > img.sponsor-on,
+.hex-commands > img.atl-on,
+.hex-commands > img.share-on
+{
+    opacity: 0;
+}
+
+.hex-commands > img.register-on:hover,
+.hex-commands > img.about-on:hover,
+.hex-commands > img.sponsor-on:hover,
+.hex-commands > img.atl-on:hover,
+.hex-commands > img.share-on:hover
+{
+    opacity: 1;
+}
+
+.hex-commands > img.register:hover,
+.hex-commands > img.about:hover,
+.hex-commands > img.sponsor:hover,
+.hex-commands > img.atl:hover,
+.hex-commands > img.share:hover
+{
+    opacity: 0;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

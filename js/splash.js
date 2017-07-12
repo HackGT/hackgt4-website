@@ -46,11 +46,6 @@ window.onload = () => {
         }
     });
 
-    // Get the middle of the text to offset.
-    text.final_geometry.computeBoundingBox();
-    const text_bb = text.final_geometry.boundingBox;
-    const middle = -0.5 * (text_bb.max.x - text_bb.min.x);
-
     // instantiate a loader
     var loader = new THREE.TextureLoader();
 
@@ -108,6 +103,39 @@ window.onload = () => {
             window.innerHeight || 0);
         if (window.scrollY < height / 2) {
             jump('.event-info');
+        }
+    });
+
+    const isElementInViewport = (el) => {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight
+                                || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth
+                               || document.documentElement.clientWidth)
+        );
+    };
+
+    const hexes = document.getElementsByClassName("hex-commands")[0];
+    let hexes_animated_in = false;
+
+    window.addEventListener('scroll', (event) => {
+        if (!hexes_animated_in && isElementInViewport(hexes)) {
+            const tiles = document.querySelectorAll(
+                ".hex-commands > img.register, " +
+                ".hex-commands > img.about, " +
+                ".hex-commands > img.sponsor, " +
+                ".hex-commands > img.atl, " +
+                ".hex-commands > img.share"
+            );
+
+            for (const tile of tiles) {
+                tile.className += " animate";
+            }
+
+            hexes_animated_in = true;
         }
     });
 };
