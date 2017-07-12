@@ -66,6 +66,9 @@ async function showMain() {
 function generateCountdownText(): string {
     const date = moment("2017-10-13");
     let days = date.diff(moment(), "days");
+    if (days < 0) {
+        return "Thanks for coming!";
+    }
     return `${days} day${days === 1 ? "" : "s"} remaining`;
 }
 
