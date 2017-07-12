@@ -50,7 +50,7 @@ window.onload = async () => {
         antialias: true
         // debug: true
     });
-    engine.camera.position.set(0, 0, 1000);
+    engine.camera.position.set(0, 0, 1200);
     engine.camera.lookAt(new THREE.Vector3(0, 0, 0));
     engine.render();
 
@@ -84,16 +84,14 @@ window.onload = async () => {
 	    // Function when resource is loaded
 	    function (texture) {
             var backgroundMesh = new THREE.Mesh(
-                new THREE.PlaneGeometry(1000, 1000, 0),
+                new THREE.PlaneGeometry(2000, 1000, 0),
                 new THREE.MeshBasicMaterial({
                     map: texture
                 }));
-            // backgroundMesh.material.depthTest = false;
-            // backgroundMesh.material.depthWrite = false;
 
             backgroundMesh.position.x = 0;
             backgroundMesh.position.y = -50;
-            backgroundMesh.position.z = 0;
+            backgroundMesh.position.z = -200;
             backgroundMesh.rotation.x = 0;
             backgroundMesh.rotation.y = Math.PI * 2;
 
@@ -201,7 +199,7 @@ window.onload = async () => {
         if (valid_content.has(selector)) {
             show_box(selector);
         }
-    }
+    };
 
     document.querySelector("input.prompt").addEventListener('input', (e) => { display_section(e.target.value); });
 
