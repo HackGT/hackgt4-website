@@ -175,7 +175,9 @@ window.onload = async () => {
 
     const draw_line = (line) => {
         document.querySelector(`.hex-commands > svg.${line}`).classList.add("draw");
-        document.querySelector("input.prompt").value = "";
+        if (document.querySelector("input.prompt").value != line) {
+            document.querySelector("input.prompt").value = "";
+        }
         text_rendering[line] = setTimeout(() => {
             document.querySelector("input.prompt").value = line;
         }, 400);
