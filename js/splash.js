@@ -92,10 +92,10 @@ window.onload = async () => {
     text.mesh.rotation.x = -0.3;
     text.mesh.rotation.y = Math.PI * 2;
 
-	const texture = new THREE.Texture();
-	texture.image = document.querySelector('.star-sky');
-	texture.format = THREE.RGBFormat;
-	texture.needsUpdate = true;
+    const texture = new THREE.Texture();
+    texture.image = document.querySelector('.star-sky');
+    texture.format = THREE.RGBFormat;
+    texture.needsUpdate = true;
 
     const backgroundMesh = new THREE.Mesh(
         new THREE.PlaneGeometry(2000, 1000, 0),
