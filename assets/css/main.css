@@ -446,7 +446,43 @@ p.no-line-height {
     z-index: -5;
 }
 
+/*
+  - ADD MLH
+  - ADD LOGO
+  - STOP SEIZURE OPTIONS
+  - Bigger date
+  - color match
+  - registration reflect new color
+  - application questions
+*/
+
 .button:hover::after {
     left: 0;
+}
+
+img.left-border {
+    position: absolute;
+    top: 101vh;
+    left: 5%;
+}
+
+img.right-border {
+    position: absolute;
+    top: 104vh;
+    right: 5%;
+}
+
+@media only screen and (max-width: 770px) {
+    img.left-border {
+        display: none;
+    }
+
+    img.right-border {
+        display: none;
+    }
+
+    img.top-boarder {
+        display: none;
+    }
 }
 
