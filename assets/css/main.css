@@ -403,7 +403,7 @@ section.hidden {
     }
 
     input[type=text].prompt {
-        width: 80vw;
+        width: 89vw;
     }
 
     div.event-info > div.content > div {
@@ -459,8 +459,18 @@ p.no-line-height {
     z-index: -5;
 }
 
+#mlh-trust-badge {
+    display: block;
+    max-width: 100px;
+    min-width: 60px;
+    position: absolute;
+    right: 5%;
+    top: 0;
+    width: 5%;
+    z-index: 10000
+}
+
 /*
-  - ADD MLH
   - ADD LOGO
   - Bigger date
   - color match
