@@ -68,7 +68,7 @@ window.onload = async () => {
     });
 
 
-    const hackgfour = new Text({
+    const hackgt4 = new Text({
         text: "HACKGT 4",
         font: KenneyFuture,
         size: 40,
@@ -79,10 +79,10 @@ window.onload = async () => {
             font_side: 0xaaaaaa
         }
     });
-    hackgfour.mesh.position.y = 100;
-    hackgfour.mesh.position.z = 100;
-    hackgfour.mesh.rotation.x = -0.3;
-    hackgfour.mesh.rotation.y = Math.PI * 2;
+    hackgt4.mesh.position.y = 100;
+    hackgt4.mesh.position.z = 100;
+    hackgt4.mesh.rotation.x = -0.3;
+    hackgt4.mesh.rotation.y = Math.PI * 2;
 
     const hackdate = new Text({
         text: "Oct. 13-15",
@@ -131,7 +131,7 @@ window.onload = async () => {
     });
 
     engine.add(text);
-    engine.add(hackgfour);
+    engine.add(hackgt4);
     engine.add(hackdate);
 
     const glitchPass = new GlitchPass();
@@ -285,12 +285,12 @@ window.onload = async () => {
 
     document.querySelector('.effects-toggle')
         .addEventListener('click', (e) => {
-            const set = e.target.innerHTML == 'effects off';
+            const set = e.target.innerHTML == 'turn effects off';
             engine.composer.bypass(set);
             if (set) {
-                e.target.innerHTML = 'effects on';
+                e.target.innerHTML = 'turn effects on';
             } else {
-                e.target.innerHTML = 'effects off';
+                e.target.innerHTML = 'turn effects off';
             }
         });
 
