@@ -470,6 +470,10 @@ p.no-line-height {
     z-index: 10000
 }
 
+.footer {
+    margin-top: 100px;
+}
+
 /*
   - ADD LOGO
   - Bigger date
