@@ -36,7 +36,7 @@ a.effects-toggle {
     top: 92vh;
     right: 0px;
 }
-    
+
 #splash-parent div.is-overlay p, section.cover div.is-overlay p {
     font-family: KenneyFuture;
     font-size: 2rem;
@@ -119,23 +119,23 @@ div.event-info > div.content > div.visible {
 input[type="text"], input[type="email"] {
     font-family: KenneyFuture, monospace;
     font-size: 2rem;
-	display: block;
-	border: 0;
-	background-color: transparent;
+    display: block;
+    border: 0;
+    background-color: transparent;
     border-bottom: 2px solid #b4fff3;
     color: #b4fff3;
     transition: border-color 0.5s;
-	text-decoration: none;
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
+    text-decoration: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input[type="text"]:focus, input[type="email"]:focus {
-	outline: none;
-	/* background-color: transparent; */
+    outline: none;
+    /* background-color: transparent; */
     /* border-bottom: 2px solid #c32aff; */
-	/* opacity: 0.8; */
+    /* opacity: 0.8; */
 }
 
 input[type="text"]::selection {
@@ -507,4 +507,3 @@ img.right-border {
         display: none;
     }
 }
-
