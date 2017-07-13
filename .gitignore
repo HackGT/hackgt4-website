@@ -3,6 +3,7 @@ node_modules
 
 # build artifacts
 bundle.js
+bundle.js.map
 
 .nvimlog
 .#*
