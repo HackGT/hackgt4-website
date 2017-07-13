@@ -142,7 +142,6 @@ window.onload = async () => {
         document.getElementsByClassName("cover")[0].classList.add("hidden");
     });
 
-    let text_rendering = {};
     let selected_line = undefined;
 
     const draw_line = (line) => {
@@ -150,15 +149,12 @@ window.onload = async () => {
         if (document.querySelector("input.prompt").value != line) {
             document.querySelector("input.prompt").value = "";
         }
-        text_rendering[line] = setTimeout(() => {
-            document.querySelector("input.prompt").value = line;
-            display_section(line);
-        }, 400);
+        document.querySelector("input.prompt").value = line;
+        display_section(line);
     };
 
     const clear_line = (line) => {
         document.querySelector(`.hex-commands > svg.${line}`).classList.remove("draw");
-        clearTimeout(text_rendering[line]);
         if (selected_line) {
             display_section(selected_line);
             document.querySelector("input.prompt").value = selected_line;
@@ -204,11 +200,8 @@ window.onload = async () => {
             document.querySelector(`.hex-commands > img.${line}`)
                 .classList.add("selected");
 
-            clearTimeout(text_rendering[line]);
-            text_rendering[line] = setTimeout(() => {
-                document.querySelector("input.prompt").value = line;
-                display_section(line);
-            }, 400);
+            document.querySelector("input.prompt").value = line;
+            display_section(line);
         } else {
             selected_line = undefined;
         }
