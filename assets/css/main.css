@@ -390,11 +390,11 @@ section.hidden {
     }
 
     input[type=text].prompt {
-        width: 90vw;
+        width: 80vw;
     }
 
     div.event-info > div.content > div {
-        width: 90vw;
+        width: 80vw;
     }
 }
 
@@ -420,6 +420,7 @@ a:hover {
 
 a.button, a.button:link, a.button:visited, a.button:active {
     color: #81CCC0;
+    text-decoration: none;
 }
 
 p.no-line-height {
