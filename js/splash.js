@@ -58,7 +58,7 @@ window.onload = async () => {
     const text = new Timer({
         date: "2017/10/13",
         font: KenneyFuture,
-        size: 40,
+        size: 20,
         height: 10,
         curveSegments: 4,
         color: {
@@ -79,17 +79,33 @@ window.onload = async () => {
             font_side: 0xaaaaaa
         }
     });
-    hackgfour.mesh.position.y = 50;
+    hackgfour.mesh.position.y = 100;
     hackgfour.mesh.position.z = 100;
     hackgfour.mesh.rotation.x = -0.3;
     hackgfour.mesh.rotation.y = Math.PI * 2;
+
+    const hackdate = new Text({
+        text: "Oct. 13-15",
+        font: KenneyFuture,
+        size: 40,
+        height: 10,
+        curveSegments: 4,
+        color: {
+            font: 0xffffff,
+            font_side: 0xaaaaaa
+        }
+    });
+    hackdate.mesh.position.y = 10;
+    hackdate.mesh.position.z = 100;
+    hackdate.mesh.rotation.x = 0;
+    hackdate.mesh.rotation.y = Math.PI * 2;
 
 
     // Position and rotate to face us.
     // text.mesh.position.x = middle;
     text.mesh.position.y = -50;
     text.mesh.position.z = 100;
-    text.mesh.rotation.x = -0.3;
+    text.mesh.rotation.x = 0.3;
     text.mesh.rotation.y = Math.PI * 2;
 
     const texture = new THREE.Texture();
@@ -116,6 +132,7 @@ window.onload = async () => {
 
     engine.add(text);
     engine.add(hackgfour);
+    engine.add(hackdate);
 
     const glitchPass = new GlitchPass();
     glitchPass.renderToScreen = true;
