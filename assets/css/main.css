@@ -534,3 +534,12 @@ img.right-border {
         display: none;
     }
 }
+
+.clickable-img {
+    cursor: pointer;
+}
+
+.clickable-text {
+    cursor: pointer;
+    z-index: 10;
+}
