@@ -267,6 +267,17 @@ window.onload = async () => {
             });
     }
 
+    document.querySelector('.effects-toggle')
+        .addEventListener('click', (e) => {
+            const set = e.target.innerHTML == 'effects off';
+            engine.composer.bypass(set);
+            if (set) {
+                e.target.innerHTML = 'effects on';
+            } else {
+                e.target.innerHTML = 'effects off';
+            }
+        });
+
     await writeText(document.getElementById("intro-text"));
     document.getElementsByClassName("cover")[0].classList.add("hidden");
 };

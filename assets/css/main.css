@@ -20,8 +20,21 @@ section.cover div.is-overlay p {
     padding: 10vh;
 }
 
+section.cover div.is-overlay p {
+    padding: 10vh;
+}
+
 #splash-parent div.is-overlay p {
     padding-bottom: 10vh;
+}
+
+a.effects-toggle {
+    z-index: 20;
+    color: white;
+    position: absolute;
+    padding: 2vh;
+    top: 92vh;
+    right: 0px;
 }
     
 #splash-parent div.is-overlay p, section.cover div.is-overlay p {
@@ -320,7 +333,7 @@ section.hidden {
 }
 
 .cover {
-    z-index: 100;
+    z-index: 10;
     position: absolute;
     top: 0;
     left: 0;
@@ -449,7 +462,6 @@ p.no-line-height {
 /*
   - ADD MLH
   - ADD LOGO
-  - STOP SEIZURE OPTIONS
   - Bigger date
   - color match
   - registration reflect new color
