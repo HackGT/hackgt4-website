@@ -246,6 +246,12 @@ window.onload = async () => {
     document.addEventListener('touchmove', on_scroll, false);
     await on_scroll();
 
+    document.body.addEventListener('keypress', () => {
+        if (!isElementInViewport(hexes)) {
+            jump('.event-info');
+        }
+    }, false);
+
     document.querySelector("input.prompt").addEventListener('input', (e) => {
         display_section(e.target.value);
     });
