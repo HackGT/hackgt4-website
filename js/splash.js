@@ -1,5 +1,6 @@
 import Renderer from "./renderer.js";
 import Timer from "./timer.js";
+import Text from "./text.js";
 import GlitchPass from "../lib/postprocessing/GlitchPass.js";
 import * as KenneyFuture from "../assets/fonts/kenney_future.json";
 
@@ -60,23 +61,33 @@ window.onload = async () => {
         size: 40,
         height: 10,
         curveSegments: 4,
-        speed: 4,
         color: {
             font: 0xffffff,
             font_side: 0xaaaaaa
-        },
-        cursor: {
-            text: "_"
-        },
-        after: () => {
-            // Add glitch effect
-            console.log("Animation Finished");
         }
     });
 
+
+    const hackgfour = new Text({
+        text: "HACKGT 4",
+        font: KenneyFuture,
+        size: 40,
+        height: 10,
+        curveSegments: 4,
+        color: {
+            font: 0xffffff,
+            font_side: 0xaaaaaa
+        }
+    });
+    hackgfour.mesh.position.y = 50;
+    hackgfour.mesh.position.z = 100;
+    hackgfour.mesh.rotation.x = -0.3;
+    hackgfour.mesh.rotation.y = Math.PI * 2;
+
+
     // Position and rotate to face us.
     // text.mesh.position.x = middle;
-    text.mesh.position.y = 0;
+    text.mesh.position.y = -50;
     text.mesh.position.z = 100;
     text.mesh.rotation.x = -0.3;
     text.mesh.rotation.y = Math.PI * 2;
@@ -104,6 +115,7 @@ window.onload = async () => {
     });
 
     engine.add(text);
+    engine.add(hackgfour);
 
     const glitchPass = new GlitchPass();
     glitchPass.renderToScreen = true;
