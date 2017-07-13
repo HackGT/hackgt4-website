@@ -403,3 +403,15 @@ section.hidden {
   right: 0;
   top: 0;
 }
+
+a:link {
+    color: #b4fff3;
+}
+
+a:visited, a:active {
+    color: #81CCC0;
+}
+
+a:hover {
+    color: white;
+}
