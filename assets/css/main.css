@@ -465,6 +465,11 @@ p.no-line-height {
     /*so the button formats nicely*/
 }
 
+p.no-up-space {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
 .button {
     overflow: hidden;
     position: relative;
