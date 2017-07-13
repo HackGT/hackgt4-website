@@ -112,8 +112,8 @@ div.event-info > div.content > div.visible {
     border-radius: 0px;
     border: 2px solid #b4fff3;
     background: none;
-    padding: 4px;
-    margin: 4px 0px;
+    /* padding: 4px; */
+    /* margin: 4px 0px; */
 }
 
 input[type="text"], input[type="email"] {
@@ -367,6 +367,12 @@ section.hidden {
     line-height: 1.5em;
     user-select: none;
     text-align: center;
+}
+
+a.button.apply {
+    width: calc(100% - 4px);
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 #intro-text::after {
