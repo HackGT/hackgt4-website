@@ -242,7 +242,7 @@ input[type=text].prompt {
     animation-delay: 0.3s;
 }
 
-.hex-commands > img.animate.share {
+.hex-commands > img.animate.social {
     -webkit-animation-delay: 0.4s; /* Safari 4.0 - 8.0 */
     animation-delay: 0.4s;
 }
@@ -267,7 +267,7 @@ input[type=text].prompt {
     left: 228px;
 }
 
-.hex-commands > img.share, .hex-commands > img.share-on {
+.hex-commands > img.social, .hex-commands > img.social-on {
     top: 2px;
     left: 197px;
 }
@@ -276,7 +276,7 @@ input[type=text].prompt {
 .hex-commands > img.about-on,
 .hex-commands > img.sponsor-on,
 .hex-commands > img.atl-on,
-.hex-commands > img.share-on
+.hex-commands > img.social-on
 {
     opacity: 0;
 }
@@ -285,7 +285,7 @@ input[type=text].prompt {
 .hex-commands > img.about-on.selected,
 .hex-commands > img.sponsor-on.selected,
 .hex-commands > img.atl-on.selected,
-.hex-commands > img.share-on.selected
+.hex-commands > img.social-on.selected
 {
     opacity: 1;
 }
@@ -294,7 +294,7 @@ input[type=text].prompt {
 .hex-commands > img.about-on:hover,
 .hex-commands > img.sponsor-on:hover,
 .hex-commands > img.atl-on:hover,
-.hex-commands > img.share-on:hover
+.hex-commands > img.social-on:hover
 {
     opacity: 1;
 }
@@ -303,7 +303,7 @@ input[type=text].prompt {
 .hex-commands > img.about:hover,
 .hex-commands > img.sponsor:hover,
 .hex-commands > img.atl:hover,
-.hex-commands > img.share:hover
+.hex-commands > img.social:hover
 {
     opacity: 0 !important;
 }
@@ -312,7 +312,7 @@ input[type=text].prompt {
 .hex-commands > img.about.selected,
 .hex-commands > img.sponsor.selected,
 .hex-commands > img.atl.selected,
-.hex-commands > img.share.selected
+.hex-commands > img.social.selected
 {
     opacity: 0 !important;
 }

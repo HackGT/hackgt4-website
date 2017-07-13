@@ -175,7 +175,7 @@ window.onload = async () => {
             .classList.remove("visible");
     };
 
-    const valid_content = new Set(['about', 'register', 'sponsor', 'atl', 'share']);
+    const valid_content = new Set(['about', 'register', 'sponsor', 'atl', 'social']);
     const display_section = (selector) => {
         valid_content.forEach(hide_box);
         selector = selector.toLowerCase();
@@ -223,7 +223,7 @@ window.onload = async () => {
                     ".hex-commands > img.about, " +
                     ".hex-commands > img.sponsor, " +
                     ".hex-commands > img.atl, " +
-                    ".hex-commands > img.share"
+                    ".hex-commands > img.social"
             );
             hexes_animated_in = true;
 
@@ -250,7 +250,7 @@ window.onload = async () => {
         display_section(e.target.value);
     });
 
-    for (const line of ['about', 'register', 'sponsor', 'atl', 'share']) {
+    for (const line of ['about', 'register', 'sponsor', 'atl', 'social']) {
         document.querySelector(`.hex-commands > img.${line}-on`)
             .addEventListener('mouseenter', (e) => {
                 draw_line(line);
