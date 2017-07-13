@@ -200,6 +200,7 @@ input[type=text].prompt {
 
 .about h2 {
     color: #b4fff3;
+    font-family: KenneyFuture, monospace;
 }
 
 .faq-question {
@@ -389,6 +390,7 @@ a.button.apply {
     width: calc(100% - 4px);
     text-align: center;
     font-size: 1.5rem;
+    font-family: KenneyFuture, monospace;
 }
 
 #intro-text::after {
@@ -494,6 +496,7 @@ p.no-line-height {
 
 .footer {
     margin-top: 100px;
+    text-align: center;
 }
 
 /*
