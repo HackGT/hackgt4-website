@@ -183,7 +183,7 @@ static_project() {
 
     if [[ ${TRAVIS_BRANCH:-} = master && ${TRAVIS_PULL_REQUEST:-} = false ]]; then
         commit_to_branch 'gh-pages'
-        set_cloudflare_dns CNAME "$(cat CNAME)" "${ORG_NAME}.github.io" true
+        # set_cloudflare_dns CNAME "$(cat CNAME)" "${ORG_NAME}.github.io" true
     fi
 }
 
