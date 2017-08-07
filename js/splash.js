@@ -13,6 +13,8 @@ function wait(milliseconds) {
     });
 }
 
+let hasSeenIntroKey = 'hgt4HasSeenIntro';
+
 async function writeText(container) {
     await wait(500);
 
@@ -294,6 +296,12 @@ window.onload = async () => {
             }
         });
 
-    await writeText(document.getElementById("intro-text"));
+    if (!localStorage.getItem(hasSeenIntroKey)) {
+        // if they haven't seen the little terminal thing yet...
+        localStorage.setItem(hasSeenIntroKey, true);
+        await writeText(document.getElementById("intro-text"));
+    }
+
+
     document.getElementsByClassName("cover")[0].classList.add("hidden");
 };
