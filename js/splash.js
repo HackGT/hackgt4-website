@@ -298,10 +298,10 @@ window.onload = async () => {
 
     if (!localStorage.getItem(hasSeenIntroKey)) {
         // if they haven't seen the little terminal thing yet...
+        document.getElementsByClassName("cover")[0].classList.remove("hidden");
         localStorage.setItem(hasSeenIntroKey, true);
         await writeText(document.getElementById("intro-text"));
     }
-
 
     document.getElementsByClassName("cover")[0].classList.add("hidden");
 };
