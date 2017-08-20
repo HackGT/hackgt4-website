@@ -29,17 +29,13 @@ section.cover div.is-overlay p {
     padding: 10vh;
 }
 
-#splash-parent div.is-overlay p {
-    padding-bottom: 10vh;
-}
-
 a.effects-toggle {
     z-index: 20;
     color: white;
-    position: absolute;
     padding: 2vh;
-    top: 92vh;
-    right: 0px;
+    float: right;
+    position: relative;
+    font-size: 1rem;
 }
 
 #splash-parent div.is-overlay p, section.cover div.is-overlay p {
@@ -92,9 +88,6 @@ div.event-info {
     font-family: CourierPrime, courier, monospace;
     width: 400px;
     padding: 1em;
-    /* border-right: 2px solid #b4fff3; */
-    /* border-left: 2px solid #b4fff3; */
-    /* border-bottom: 2px solid #b4fff3; */
     display: none;
     color: white;
     background-color: #052e37;
@@ -114,8 +107,6 @@ div.event-info {
     border-radius: 0px;
     border: 2px solid #b4fff3;
     background: none;
-    /* padding: 4px; */
-    /* margin: 4px 0px; */
 }
 
 input[type="text"], input[type="email"] {
@@ -135,9 +126,6 @@ input[type="text"], input[type="email"] {
 
 input[type="text"]:focus, input[type="email"]:focus {
     outline: none;
-    /* background-color: transparent; */
-    /* border-bottom: 2px solid #c32aff; */
-    /* opacity: 0.8; */
 }
 
 input[type="text"]::selection {
@@ -345,8 +333,8 @@ input[type=text].prompt {
 }
 
 section.hidden {
-    /* display: none; */
-    animation: fadeout 1s forwards;
+    opacity: 0;
+    transition: 0.5s opacity;
 }
 
 .cover {
@@ -374,10 +362,8 @@ section.hidden {
 
 #intro-text {
     background-color: initial;
-    /* color: #8dbcf1; */
     color: white;
     text-shadow: 0px 0px 25px #1c3093;
-    /* font-family: "VT323"; */
     font-family: KenneyFuture, monospace;
     font-size: 3.5em;
     padding: 0;
@@ -399,7 +385,6 @@ a.button.apply {
     content: "";
     width: 0.4em;
     height: 0.8em;
-    /* background-color: #8dbcf1; */
     background-color: white;
     position: relative;
     top: 0.1em;
@@ -441,6 +426,11 @@ a.button.apply {
   position: absolute;
   right: 0;
   top: 0;
+  text-align: center;
+}
+
+.is-overlay > p {
+    margin: 0.25em;
 }
 
 a:link {
@@ -547,4 +537,41 @@ img.right-border {
 .clickable-text {
     cursor: pointer;
     z-index: 10;
+}
+
+.is-centered {
+    text-align: center;
+}
+
+.hover-button {
+    display: inline-block;
+    border: solid white 3px;
+    cursor:pointer;
+    color: white;
+    font-weight: bold;
+    padding: 0.25em;
+    position: relative;
+    z-index: 40;
+    margin-bottom: 1em;
+}
+
+.hover-button:hover {
+    background-color: white;
+}
+
+.hover-button > p {
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+
+.hover-button > p > a:link, .hover-button > p > a:visited {
+    color: white;
+    z-index: 1;
+    transition: 0.5s all;
+}
+
+.hover-button:hover > p > a:link, .hover-button:hover > p > a:visited {
+    color: black;
+    z-index: 1;
 }
