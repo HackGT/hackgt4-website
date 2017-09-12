@@ -201,6 +201,10 @@ input[type=text].prompt {
     color: #b4fff3;
 }
 
+.time {
+    color: #b4fff3;   
+}
+
 .hex-commands > img {
     width: 64px;
     position: absolute;
