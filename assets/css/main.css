@@ -588,19 +588,19 @@ img.right-border {
     flex-wrap: wrap;
 }
 
-.sponsor-row > img {
+.sponsor-row img {
     padding: 1em;
     vertical-align: bottom;
 }
 
-.exo > img {
+.exo img {
     max-height: 3em;
 }
 
-.meso > img {
+.meso img {
     max-height: 2.5em;
 }
 
-.strato > img {
+.strato img {
     max-height: 2em;
 }
