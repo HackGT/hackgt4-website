@@ -579,3 +579,28 @@ img.right-border {
     color: black;
     z-index: 1;
 }
+
+.sponsor-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.sponsor-row > img {
+    padding: 1em;
+    vertical-align: bottom;
+}
+
+.exo > img {
+    max-height: 3em;
+}
+
+.meso > img {
+    max-height: 2.5em;
+}
+
+.strato > img {
+    max-height: 2em;
+}
