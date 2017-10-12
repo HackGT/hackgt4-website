@@ -58,7 +58,7 @@ window.onload = async () => {
     engine.render();
 
     const text = new Timer({
-        date: "2017/10/13",
+        date: 1507930200000,
         font: KenneyFuture,
         size: 20,
         height: 10,

@@ -53,10 +53,14 @@ class Timer {
             const minutes = ("00" + (Math.floor(diff / 1000 / 60) % 60)).slice(-2);
             const hours   = Math.floor(diff / 1000 / 60 / 60) % 24;
             const days    = Math.floor(diff / 1000 / 60 / 60 / 24);
+            let day_word = "days";
+            if (days === 1) {
+                day_word = "day";
+            }
 
             // Create new mesh
             this.geometry = this.make_text(
-                `${days} days ${hours}:${minutes}:${seconds}`,
+                `${days} ${day_word} ${hours}:${minutes}:${seconds}`,
                 this.size * window.innerWidth / window.innerHeight
             );
             this.text_mesh = new THREE.Mesh(this.geometry, this.material);
