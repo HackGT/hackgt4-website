@@ -13,6 +13,28 @@ body {
     overflow-x: hidden;
 }
 
+div.live-site {
+    position: absolute;
+    color: white;
+    z-index: 100;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    top: calc(100vh - 250px);
+    font-size: 3rem;
+    color: white;
+}
+
+div.live-site p {
+    text-align: center;
+    margin: 0px;
+}
+
+div.live-site p a {
+    text-decoration: none;
+    color: white;
+}
+
 #splash-canvas {
     position: absolute;
     top: 0px;
