@@ -132,7 +132,6 @@ window.onload = async () => {
         update: () => {}
     });
 
-    engine.add(text);
     engine.add(hackgt4);
     engine.add(hackdate);
 
